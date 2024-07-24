@@ -17,3 +17,13 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
 }
+
+.select {
+   margin-bottom:10px; 
+   font-size: 14px !important;
+   width: 90% !important;
+}
+
+.category {
+    background-color: #242424 !important;   
+}

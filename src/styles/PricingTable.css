@@ -1,6 +1,6 @@
 .table-wrapper {
     margin: 10px 70px 70px;
-    box-shadow: 0px 0px 117px #A6ACAF;
+    box-shadow: 0px 0px 117px #000000;
 }
   
 .fl-table {
@@ -12,7 +12,7 @@
     width: 100%;
     max-width: 100%;
     white-space: nowrap;
-    background-color: white;
+    background-color: #c2c5c7;
 }
   
 .fl-table td, .fl-table th {
@@ -21,25 +21,30 @@
 }
   
 .fl-table td {
-    border-right: 1px solid #f8f8f8;
+    border-right: 1px solid #303030;
     font-size: 20px;
-    color: black;
+    color: #242424;
 }
   
 .fl-table thead th {
-    color: #ffffff;
+    color: #242424;
     background: #A6ACAF;
 }
   
 .fl-table thead th:nth-child(odd) {
-    color: #ffffff;
+    color: #242424;
     background: #A6ACAF;
 }
   
 .fl-table tr:nth-child(even) {
-    background: #F8F8F8;
+    background: #A6ACAF;
 }
   
+.rowTotal td{
+  font-weight: bold;
+}
+
+
 .sellingpricetotal {
     background: #A6ACAF;
     color: #ffffff !important;
@@ -47,7 +52,34 @@
 }
 
 .css-19bb58m {
-  display: none !important; /* Hide the div */
+  display: none !important; 
+}
+
+.css-b62m3t-container {
+  display: inline-block;
+  width: 60%;
+}
+
+.css-13cymwt-control {
+  font-size: 16px !important;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #242424 !important;
+  color: #c2c5c7 !important;
+}
+
+.css-1nmdiq5-menu  {
+  cursor: pointer !important;
+  font-size: 19px !important;
+}
+
+.css-1xc3v61-indicatorContainer { 
+  padding: 5px !important;
+  cursor: pointer !important;
 }
   
 /* Responsive Styles */
@@ -61,7 +93,7 @@
       display: block;
       text-align: right;
       font-size: 11px;
-      color: white;
+      color: #c2c5c7;
       padding: 0 0 10px;
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {
@@ -112,5 +144,13 @@
     .fl-table tbody td {
       display: block;
       text-align: center;
+    }
+
+    .css-13cymwt-control {
+      font-size: 13px !important;
+    }
+
+    .css-1nmdiq5-menu  {
+      font-size: 16px !important;
     }
 }
