@@ -111,7 +111,7 @@ function PricingTable({
             </td>
             <td>{kickbacksAmount.toFixed(2)}</td>
           </tr>
-          <tr>
+          <tr className='rowTotal'>
             <td>=</td>
             <td>Minimum selling price (excl. VAT)</td>
             <td></td>
@@ -119,7 +119,7 @@ function PricingTable({
           </tr>
           <tr>
             <td>+</td>
-            <td>Margin (Editable)</td>
+            <td>Margin</td>
             <td>
               <input
                 type="number"
@@ -130,7 +130,7 @@ function PricingTable({
             </td>
             <td>{marginAmount.toFixed(2)}</td>
           </tr>
-          <tr>
+          <tr className='rowTotal'>
             <td>=</td>
             <td>Selling price (excl. VAT)</td>
             <td></td>
@@ -155,7 +155,7 @@ function PricingTable({
             </td>
             <td>{vatAmount.toFixed(2)}</td>
           </tr>
-          <tr>
+          <tr className='rowTotal'>
             <td>=</td>
             <td>Selling price (incl. VAT)</td>
             <td></td>
