@@ -1,42 +1,52 @@
 [
-  {
-    "customerID": "C001",
-    "companyName": "Schweizerische Bank AG"
-  },
-  {
-    "customerID": "C002",
-    "companyName": "Nestlé S.A."
-  },
-  {
-    "customerID": "C003",
-    "companyName": "Roche Holding AG"
-  },
-  {
-    "customerID": "C004",
-    "companyName": "Swiss International Air Lines"
-  },
-  {
-    "customerID": "C005",
-    "companyName": "Zurich Insurance Group"
-  },
-  {
-    "customerID": "C006",
-    "companyName": "UBS Group AG"
-  },
-  {
-    "customerID": "C007",
-    "companyName": "Credit Suisse Group AG"
-  },
-  {
-    "customerID": "C008",
-    "companyName": "Swiss Re AG"
-  },
-  {
-    "customerID": "C009",
-    "companyName": "Lonza Group AG"
-  },
-  {
-    "customerID": "C010",
-    "companyName": "ABB Ltd."
-  }
+  { "customerID": "100001", "companyName": "Schweizerische Bank AG" },
+  { "customerID": "100002", "companyName": "Nestlé S.A." },
+  { "customerID": "100003", "companyName": "Roche Holding AG" },
+  { "customerID": "100004", "companyName": "Swiss International Air Lines" },
+  { "customerID": "100005", "companyName": "Zurich Insurance Group" },
+  { "customerID": "100006", "companyName": "UBS Group AG" },
+  { "customerID": "100007", "companyName": "Credit Suisse Group AG" },
+  { "customerID": "100008", "companyName": "Swiss Re AG" },
+  { "customerID": "100009", "companyName": "Lonza Group AG" },
+  { "customerID": "100010", "companyName": "ABB Ltd." },
+  { "customerID": "100011", "companyName": "Swiss Life AG" },
+  { "customerID": "100012", "companyName": "Sika AG" },
+  { "customerID": "100013", "companyName": "Julius Baer Group" },
+  { "customerID": "100014", "companyName": "Swiss Prime Site AG" },
+  { "customerID": "100015", "companyName": "Adolf Würth AG" },
+  { "customerID": "100016", "companyName": "Panalpina Welttransport AG" },
+  { "customerID": "100017", "companyName": "Zurich Financial Services" },
+  { "customerID": "100018", "companyName": "Ems-Chemie Holding AG" },
+  { "customerID": "100019", "companyName": "Helvetia Versicherungen" },
+  { "customerID": "100020", "companyName": "Richemont International SA" },
+  { "customerID": "100021", "companyName": "Migros-Genossenschafts-Bund" },
+  { "customerID": "100022", "companyName": "Schindler Group" },
+  { "customerID": "100023", "companyName": "Alcon Inc." },
+  { "customerID": "100024", "companyName": "Swiss Post" },
+  { "customerID": "100025", "companyName": "Rieter AG" },
+  { "customerID": "100026", "companyName": "Lindt & Sprüngli AG" },
+  { "customerID": "100027", "companyName": "Clariant AG" },
+  { "customerID": "100028", "companyName": "Zurich Insurance Group Ltd." },
+  { "customerID": "100029", "companyName": "Geneva Financial Services" },
+  { "customerID": "100030", "companyName": "Swiss Bank Corporation" },
+  { "customerID": "100031", "companyName": "Dufry AG" },
+  { "customerID": "100032", "companyName": "Swiss Energy Group" },
+  { "customerID": "100033", "companyName": "LafargeHolcim Ltd." },
+  { "customerID": "100034", "companyName": "Holcim Switzerland Ltd." },
+  { "customerID": "100035", "companyName": "Swiss Watches Ltd." },
+  { "customerID": "100036", "companyName": "Swiss Army AG" },
+  { "customerID": "100037", "companyName": "Swisscom AG" },
+  { "customerID": "100038", "companyName": "Sunrise Communications AG" },
+  { "customerID": "100039", "companyName": "Helsana Versicherungen" },
+  { "customerID": "100040", "companyName": "Tecan Group Ltd." },
+  { "customerID": "100041", "companyName": "Zurich Airport AG" },
+  { "customerID": "100042", "companyName": "Alpina Watches" },
+  { "customerID": "100043", "companyName": "Nestlé Purina Petcare" },
+  { "customerID": "100044", "companyName": "Aldi Suisse" },
+  { "customerID": "100045", "companyName": "Coop Schweiz" },
+  { "customerID": "100046", "companyName": "H&M Schweiz" },
+  { "customerID": "100047", "companyName": "Migros Bank AG" },
+  { "customerID": "100048", "companyName": "Helvetia Schweizerische Lebensversicherung" },
+  { "customerID": "100049", "companyName": "Deloitte Schweiz" },
+  { "customerID": "100050", "companyName": "PwC Schweiz" }
 ]

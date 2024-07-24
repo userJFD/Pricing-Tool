@@ -5,43 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
 *{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -51,7 +14,7 @@
 body{
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
-  background:#324960;
+  background:#838181;
 }
 
 h2{
@@ -59,7 +22,7 @@ h2{
   font-size: 50px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgb(253, 253, 253);
+  color: rgb(0, 0, 0);
   padding: 30px 0;
 }
 
@@ -116,14 +79,14 @@ h2{
 
 .fl-table input,
 .fl-table select {
-  font-size: 20px; /* Match the font size */
-  height: 40px; /* Adjust height as needed */
-  width: 60%; /* Full width of the cell */
-  padding: 5px; /* Add some padding for better look */
-  border: 1px solid #ccc; /* Add border to match the table cells */
-  border-radius: 4px; /* Rounded corners for consistency */
-  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
-  text-align: center; /* Center the text in the input field */
+  font-size: 20px; 
+  height: 40px; 
+  width: 60%; 
+  padding: 5px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  text-align: center; 
   background: #4FC3A1;
 }
 

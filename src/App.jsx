@@ -1,15 +1,33 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import html2canvas from 'html2canvas';
-const CUSTOMER_DATA_URL = '../public/data/customers.json';
+import CustomerSelector from './components/CustomerSelector';
+import PricingTable from './components/PricingTable';
+import ScreenshotButton from './components/ScreenshotButton';
+
+// Update this path according to the actual location of your JSON file
+const CUSTOMER_DATA_URL = '/data/customers.json';
 
 function App() {
+
+  const vatRates = {
+    "Switzerland": {
+      "food": 2.5,
+      "non-food": 8.1
+    },
+    "Germany": {
+      "food": 7,
+      "non-food": 19
+    }
+  };
+
+
+  const defaultVatRate = vatRates["Switzerland"]["non-food"]; 
   const [purchaseAmount, setPurchaseAmount] = useState('0.00');
   const [deliveryPercent, setDeliveryPercent] = useState('0.00');
   const [kickbacksPercent, setKickbacksPercent] = useState('0.00');
   const [marginPercent, setMarginPercent] = useState('0.00');
-  const [vatRate, setVatRate] = useState('');
-
+  const [vatRate, setVatRate] = useState(defaultVatRate);
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,25 +52,7 @@ function App() {
     setFilteredCustomers(results);
   }, [searchTerm, customers]);
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleCustomerChange = (event) => {
-    setSelectedCustomer(event.target.value);
-  };
-
-  const vatRates = {
-    "Switzerland": {
-      "food": 2.5,
-      "non-food": 8.1
-    },
-    "Germany": {
-      "food": 7,
-      "non-food": 19
-    }
-  };
-
+  
   const purchaseAmountNumber = parseFloat(purchaseAmount) || 0;
   const deliveryPercentNumber = parseFloat(deliveryPercent) || 0;
   const kickbacksPercentNumber = parseFloat(kickbacksPercent) || 0;
@@ -77,164 +77,42 @@ function App() {
   };
 
   return (
-    <div className="table-wrapper-two">
+    <div className="app-container">
       <h2>B2B Calculator</h2>
 
-      <div className="table-wrapper">
-        <table className="fl-table">
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Customer ID</th>
-              <th>Brand</th>
-              <th>Product type</th>
-              <th>Category</th>
-              <th>Deal Range</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div className="dropdown-container">
-                  <input
-                    type="text"
-                    placeholder="Search for a customer..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                  />
-                  <select
-                    value={selectedCustomer}
-                    onChange={handleCustomerChange}
-                    size={filteredCustomers.length}
-                  >
-                    {filteredCustomers.map((customer) => (
-                      <option key={customer.customerID} value={customer.companyName}>
-                        {customer.companyName}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </td>
-              <td>
+      <CustomerSelector
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        filteredCustomers={filteredCustomers}
+        selectedCustomer={selectedCustomer}
+        setSelectedCustomer={setSelectedCustomer}
+      />
 
-              </td>
-              <td>Editables</td>
-              <td>Editables</td>
-              <td></td>
-              <td>Editables</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <PricingTable
+        purchaseAmount={purchaseAmount}
+        setPurchaseAmount={setPurchaseAmount}
+        deliveryPercent={deliveryPercent}
+        setDeliveryPercent={setDeliveryPercent}
+        kickbacksPercent={kickbacksPercent}
+        setKickbacksPercent={setKickbacksPercent}
+        marginPercent={marginPercent}
+        setMarginPercent={setMarginPercent}
+        vatRate={vatRate}
+        setVatRate={setVatRate}
+        vatRates={vatRates}
+        deliveryAmount={deliveryAmount}
+        kickbacksAmount={kickbacksAmount}
+        minimumSellingPrice={minimumSellingPrice}
+        marginAmount={marginAmount}
+        sellingPriceExclVat={sellingPriceExclVat}
+        vatAmount={vatAmount}
+        sellingPriceInclVat={sellingPriceInclVat}
+      />
 
-      <div className="table-wrapper">
-        <table className="fl-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th>%</th>
-              <th>Amount in currency</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td>Purchase price / stock value (excl. VAT)</td>
-              <td></td>
-              <td>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={purchaseAmount}
-                  onChange={(e) => setPurchaseAmount(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>+</td>
-              <td>Delivery surcharge</td>
-              <td>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={deliveryPercent}
-                  onChange={(e) => setDeliveryPercent(e.target.value)}
-                />
-              </td>
-              <td>{deliveryAmount.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>-</td>
-              <td>Kickbacks</td>
-              <td>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={kickbacksPercent}
-                  onChange={(e) => setKickbacksPercent(e.target.value)}
-                />
-              </td>
-              <td>{kickbacksAmount.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>=</td>
-              <td>Minimum selling price (excl. VAT)</td>
-              <td></td>
-              <td>{minimumSellingPrice.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>+</td>
-              <td>Margin (Editable)</td>
-              <td>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={marginPercent}
-                  onChange={(e) => setMarginPercent(e.target.value)}
-                />
-              </td>
-              <td>{marginAmount.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>=</td>
-              <td>Selling price (excl. VAT)</td>
-              <td></td>
-              <td>{sellingPriceExclVat.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>+</td>
-              <td>VAT</td>
-              <td>
-                <select
-                  value={vatRate}
-                  onChange={(e) => setVatRate(e.target.value)}
-                >
-                  <option value="">Select VAT Rate</option>
-                  <optgroup label="Switzerland">
-                    <option value={vatRates.Switzerland.food}>Food (2.5%)</option>
-                    <option value={vatRates.Switzerland["non-food"]}>Non-Food (8.1%)</option>
-                  </optgroup>
-                  <optgroup label="Germany">
-                    <option value={vatRates.Germany.food}>Food (7%)</option>
-                    <option value={vatRates.Germany["non-food"]}>Non-Food (19%)</option>
-                  </optgroup>
-                </select>
-              </td>
-              <td>{vatAmount.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>=</td>
-              <td>Selling price (incl. VAT)</td>
-              <td></td>
-              <td className='sellingpricetotal'>{sellingPriceInclVat.toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button onClick={takeScreenshot}>Take Screenshot</button>
+      <ScreenshotButton takeScreenshot={takeScreenshot} />
     </div>
   );
 }
 
 export default App;
+
