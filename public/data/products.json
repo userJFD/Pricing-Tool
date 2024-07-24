@@ -1,0 +1,31 @@
+{
+  "brands": [
+    "Nestlé",
+    "Roche",
+    "Swiss Air",
+    "Zurich",
+    "UBS",
+    "Credit Suisse",
+    "Swiss Re",
+    "Lonza",
+    "ABB"
+  ],
+  "productTypes": [
+    "Electronics",
+    "Food & Beverage",
+    "Pharmaceuticals",
+    "Insurance",
+    "Financial Services",
+    "Transportation",
+    "Chemicals"
+  ],
+  "productCategories": [
+    "Consumer Goods",
+    "Industrial Goods",
+    "Healthcare",
+    "Travel & Leisure",
+    "Financial Products",
+    "Insurance Services",
+    "Chemicals & Materials"
+  ]
+}

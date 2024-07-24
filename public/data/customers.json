@@ -1,0 +1,42 @@
+[
+  {
+    "customerID": "C001",
+    "companyName": "Schweizerische Bank AG"
+  },
+  {
+    "customerID": "C002",
+    "companyName": "Nestlé S.A."
+  },
+  {
+    "customerID": "C003",
+    "companyName": "Roche Holding AG"
+  },
+  {
+    "customerID": "C004",
+    "companyName": "Swiss International Air Lines"
+  },
+  {
+    "customerID": "C005",
+    "companyName": "Zurich Insurance Group"
+  },
+  {
+    "customerID": "C006",
+    "companyName": "UBS Group AG"
+  },
+  {
+    "customerID": "C007",
+    "companyName": "Credit Suisse Group AG"
+  },
+  {
+    "customerID": "C008",
+    "companyName": "Swiss Re AG"
+  },
+  {
+    "customerID": "C009",
+    "companyName": "Lonza Group AG"
+  },
+  {
+    "customerID": "C010",
+    "companyName": "ABB Ltd."
+  }
+]
