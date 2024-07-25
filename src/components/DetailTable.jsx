@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react';
 import '../styles/CustomerSelector.css';
+import CustomerNameSelector from './CustomerNameSelector';
+import CustomerIDSelector from './CustomerIDSelector';
 
 // Update these paths according to the actual location of your JSON files
 const CUSTOMER_DATA_URL = '/data/customers.json';
 const BRAND_DATA_URL = '/data/brands.json';
 const PRODUCT_DATA_URL = '/data/products.json';
 
-function CustomerSelector() {
+function DetailTable() {
   const [customers, setCustomers] = useState([]);
   const [customerName, setCustomerName] = useState("");
   const [customerID, setCustomerID] = useState("");
-  const [filteredCustomers, setFilteredCustomers] = useState([]);
-
   const [brands, setBrands] = useState([]);
   const [brandName, setBrandName] = useState("");
   const [filteredBrands, setFilteredBrands] = useState([]);
-
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState("");
   const [category, setCategory] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-
   const [dealRange, setDealRange] = useState("");
 
   const dealRanges = [
@@ -68,34 +66,6 @@ function CustomerSelector() {
   }, []);
 
   useEffect(() => {
-    if (customerName) {
-      const filtered = customers.filter(customer =>
-        customer.companyName.toLowerCase().includes(customerName.toLowerCase())
-      );
-      setFilteredCustomers(filtered);
-
-      const exactMatch = customers.find(customer => customer.companyName.toLowerCase() === customerName.toLowerCase());
-      if (exactMatch) {
-        setCustomerID(exactMatch.customerID);
-      }
-    } else {
-      setFilteredCustomers(customers);
-      setCustomerID("");
-    }
-  }, [customerName, customers]);
-
-  useEffect(() => {
-    if (customerID) {
-      const customer = customers.find(customer => customer.customerID === customerID);
-      if (customer) {
-        setCustomerName(customer.companyName);
-      }
-    } else {
-      setCustomerName("");
-    }
-  }, [customerID, customers]);
-
-  useEffect(() => {
     if (brandName) {
       const filtered = brands.filter(brand =>
         brand.manufacturer.toLowerCase().includes(brandName.toLowerCase())
@@ -125,14 +95,6 @@ function CustomerSelector() {
     }
   }, [productType, products]);
 
-  const handleCustomerNameChange = (event) => {
-    setCustomerName(event.target.value);
-  };
-
-  const handleCustomerIDChange = (event) => {
-    setCustomerID(event.target.value);
-  };
-
   const handleBrandNameChange = (event) => {
     setBrandName(event.target.value);
   };
@@ -143,11 +105,6 @@ function CustomerSelector() {
 
   const handleDealRangeChange = (event) => {
     setDealRange(event.target.value);
-  };
-
-  const handleCustomerSelect = (customer) => {
-    setCustomerName(customer.companyName);
-    setCustomerID(customer.customerID);
   };
 
   const handleBrandSelect = (brand) => {
@@ -175,31 +132,19 @@ function CustomerSelector() {
         <tbody>
           <tr>
             <td>
-              <input
-                type="text"
-                value={customerName}
-                onChange={handleCustomerNameChange}
-                placeholder="Type to search..."
-                list="customer-names"
+              <CustomerNameSelector 
+                customers={customers}
+                customerName={customerName}
+                setCustomerName={setCustomerName}
+                setCustomerID={setCustomerID}
               />
-              <datalist id="customer-names">
-                {filteredCustomers.map((customer) => (
-                  <option
-                    key={customer.customerID}
-                    value={customer.companyName}
-                    onClick={() => handleCustomerSelect(customer)}
-                  >
-                    {customer.companyName}
-                  </option>
-                ))}
-              </datalist>
             </td>
             <td>
-              <input
-                type="text"
-                value={customerID}
-                onChange={handleCustomerIDChange}
-                placeholder="Type to search..."
+              <CustomerIDSelector
+                customers={customers}
+                customerID={customerID}
+                setCustomerID={setCustomerID}
+                setCustomerName={setCustomerName}
               />
             </td>
             <td>
@@ -267,7 +212,7 @@ function CustomerSelector() {
   );
 }
 
-export default CustomerSelector;
+export default DetailTable;
 
 
 
