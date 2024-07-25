@@ -57,7 +57,7 @@ h2{
 }
 
 .fl-table td {
-  border-right: 1px solid #f8f8f8;
+  border-right: 1px solid #000000;
   font-size: 20px;
   color: black;
 }
@@ -92,6 +92,7 @@ h2{
   box-sizing: border-box; 
   text-align: center; 
   background: #242424;
+  color: #A6ACAF;
 }
 
 .dropdown-container {
