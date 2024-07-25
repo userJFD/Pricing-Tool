@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
-import html2canvas from 'html2canvas';
-import CustomerSelector from './components/CustomerSelector';
+import DetailTable from './components/DetailTable';
 import PricingTable from './components/PricingTable';
 import ScreenshotButton from './components/ScreenshotButton';
 
@@ -43,7 +42,7 @@ function App() {
     <div className="app-container">
       <h2>B2B Calculator</h2>
 
-      <CustomerSelector/>
+      <DetailTable/>
 
       <PricingTable
         purchaseAmount={purchaseAmount}
