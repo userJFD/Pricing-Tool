@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/DetailSelector.css';
 import CustomerNameSelector from './CustomerNameSelector';
 import CustomerIDSelector from './CustomerIDSelector';
 import BrandSelector from './BrandSelector';
+import DealRangeSelector from './DealRangeSelector';
+import ProductTypeSelector from './ProductTypeSelector';
+import CategorySelector from './CategorySelector';
 
 const CUSTOMER_DATA_URL = '/data/customers.json';
 const PRODUCT_DATA_URL = '/data/products.json';
@@ -14,22 +17,7 @@ function DetailTable() {
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState("");
   const [category, setCategory] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [dealRange, setDealRange] = useState("");
-
-  const dealRanges = [
-    "<150k",
-    "125k-150k",
-    "100k-125k",
-    "75k-100k",
-    "50k-75k",
-    "25k-50k",
-    "20k-25k",
-    "15k-20k",
-    "10k-15k",
-    "5k-10k",
-    ">5k"
-  ];
 
   // Fetch customer data from API
   useEffect(() => {
@@ -51,37 +39,8 @@ function DetailTable() {
       .catch(error => console.error('Error fetching product data:', error));
   }, []);
 
-
-  useEffect(() => {
-    if (productType) {
-      const filtered = products.filter(product =>
-        product.productType.toLowerCase().includes(productType.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-
-      const exactMatch = products.find(product => product.productType.toLowerCase() === productType.toLowerCase());
-      if (exactMatch) {
-        setCategory(exactMatch.category);
-      } else {
-        setCategory("");
-      }
-    } else {
-      setFilteredProducts(products);
-      setCategory("");
-    }
-  }, [productType, products]);
-
-  const handleProductTypeChange = (event) => {
-    setProductType(event.target.value);
-  };
-
   const handleDealRangeChange = (event) => {
     setDealRange(event.target.value);
-  };
-
-  const handleProductTypeSelect = (product) => {
-    setProductType(product.productType);
-    setCategory(product.category);
   };
 
   return (
@@ -100,7 +59,7 @@ function DetailTable() {
         <tbody>
           <tr>
             <td>
-              <CustomerNameSelector 
+              <CustomerNameSelector
                 customers={customers}
                 customerName={customerName}
                 setCustomerName={setCustomerName}
@@ -116,45 +75,24 @@ function DetailTable() {
               />
             </td>
             <td>
-              <BrandSelector/>
+              <BrandSelector />
             </td>
             <td>
-              <input
-                type="text"
-                value={productType}
-                onChange={handleProductTypeChange}
-                placeholder="Type to search..."
-                list="product-types"
-              />
-              <datalist id="product-types">
-                {filteredProducts.map((product) => (
-                  <option
-                    key={product.productType}
-                    value={product.productType}
-                    onClick={() => handleProductTypeSelect(product)}
-                  >
-                    {product.productType}
-                  </option>
-                ))}
-              </datalist>
-            </td>
-            <td>
-              <input className="category"
-                type="text"
-                value={category}
-                placeholder="Category"
-                readOnly
+              <ProductTypeSelector
+                products={products}
+                productType={productType}
+                setProductType={setProductType}
+                setCategory={setCategory}
               />
             </td>
             <td>
-              <select className="select" value={dealRange} onChange={handleDealRangeChange}>
-                <option value=""></option>
-                {dealRanges.map((range, index) => (
-                  <option key={index} value={range}>
-                    {range}
-                  </option>
-                ))}
-              </select>
+              <CategorySelector category={category} />
+            </td>
+            <td>
+              <DealRangeSelector
+                dealRange={dealRange}
+                onDealRangeChange={handleDealRangeChange}
+              />
             </td>
           </tr>
         </tbody>
@@ -164,6 +102,7 @@ function DetailTable() {
 }
 
 export default DetailTable;
+
 
 
 
