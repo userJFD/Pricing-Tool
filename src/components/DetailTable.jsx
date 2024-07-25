@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
-import '../styles/CustomerSelector.css';
+import '../styles/DetailSelector.css';
 import CustomerNameSelector from './CustomerNameSelector';
 import CustomerIDSelector from './CustomerIDSelector';
+import BrandSelector from './BrandSelector';
 
-// Update these paths according to the actual location of your JSON files
 const CUSTOMER_DATA_URL = '/data/customers.json';
-const BRAND_DATA_URL = '/data/brands.json';
 const PRODUCT_DATA_URL = '/data/products.json';
 
 function DetailTable() {
   const [customers, setCustomers] = useState([]);
   const [customerName, setCustomerName] = useState("");
   const [customerID, setCustomerID] = useState("");
-  const [brands, setBrands] = useState([]);
-  const [brandName, setBrandName] = useState("");
-  const [filteredBrands, setFilteredBrands] = useState([]);
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState("");
   const [category, setCategory] = useState("");
@@ -45,16 +41,6 @@ function DetailTable() {
       .catch(error => console.error('Error fetching customer data:', error));
   }, []);
 
-  // Fetch brand data from API
-  useEffect(() => {
-    fetch(BRAND_DATA_URL)
-      .then(response => response.json())
-      .then(data => {
-        setBrands(data);
-      })
-      .catch(error => console.error('Error fetching brand data:', error));
-  }, []);
-
   // Fetch product data from API
   useEffect(() => {
     fetch(PRODUCT_DATA_URL)
@@ -65,16 +51,6 @@ function DetailTable() {
       .catch(error => console.error('Error fetching product data:', error));
   }, []);
 
-  useEffect(() => {
-    if (brandName) {
-      const filtered = brands.filter(brand =>
-        brand.manufacturer.toLowerCase().includes(brandName.toLowerCase())
-      );
-      setFilteredBrands(filtered);
-    } else {
-      setFilteredBrands(brands);
-    }
-  }, [brandName, brands]);
 
   useEffect(() => {
     if (productType) {
@@ -95,20 +71,12 @@ function DetailTable() {
     }
   }, [productType, products]);
 
-  const handleBrandNameChange = (event) => {
-    setBrandName(event.target.value);
-  };
-
   const handleProductTypeChange = (event) => {
     setProductType(event.target.value);
   };
 
   const handleDealRangeChange = (event) => {
     setDealRange(event.target.value);
-  };
-
-  const handleBrandSelect = (brand) => {
-    setBrandName(brand.manufacturer);
   };
 
   const handleProductTypeSelect = (product) => {
@@ -148,24 +116,7 @@ function DetailTable() {
               />
             </td>
             <td>
-              <input
-                type="text"
-                value={brandName}
-                onChange={handleBrandNameChange}
-                placeholder="Type to search..."
-                list="brand-names"
-              />
-              <datalist id="brand-names">
-                {filteredBrands.map((brand) => (
-                  <option
-                    key={brand.manufacturer}
-                    value={brand.manufacturer}
-                    onClick={() => handleBrandSelect(brand)}
-                  >
-                    {brand.manufacturer}
-                  </option>
-                ))}
-              </datalist>
+              <BrandSelector/>
             </td>
             <td>
               <input
