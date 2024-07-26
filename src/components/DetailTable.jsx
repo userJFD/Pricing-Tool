@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/DetailSelector.css';
+import { useState, useEffect } from 'react';
+import '../styles/TableStyling.css';
 import CustomerNameSelector from './CustomerNameSelector';
 import CustomerIDSelector from './CustomerIDSelector';
 import BrandSelector from './BrandSelector';
@@ -102,7 +102,3 @@ function DetailTable() {
 }
 
 export default DetailTable;
-
-
-
-

@@ -1,4 +1,4 @@
-import '../styles/PricingTable.css';
+import '../styles/TableStyling.css';
 import Select from 'react-select';
 import swissflag from '../../public/images/switzerland.png';
 import germanyflag from '../../public/images/germany.png';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 function CategorySelector({ category }) {
   return (
     <input
