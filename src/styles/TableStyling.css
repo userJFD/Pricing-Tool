@@ -2,7 +2,7 @@
     margin: 10px 70px 70px;
     box-shadow: 0px 0px 117px #000000;
 }
-  
+
 .fl-table {
     border-radius: 5px;
     font-size: 18px;
@@ -14,36 +14,79 @@
     white-space: nowrap;
     background-color: #c2c5c7;
 }
-  
+
 .fl-table td, .fl-table th {
     text-align: center;
     padding: 8px;
 }
-  
+
 .fl-table td {
     border-right: 1px solid #303030;
     font-size: 16px;
     color: #242424;
 }
-  
+
 .fl-table thead th {
     color: #242424;
     background: #A6ACAF;
 }
-  
+
 .fl-table thead th:nth-child(odd) {
     color: #242424;
     background: #A6ACAF;
 }
-  
+
 .fl-table tr:nth-child(even) {
     background: #A6ACAF;
 }
-  
+
+.fl-table input,
+.fl-table select {
+  font-size: 20px;
+  height: 40px;
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #242424;
+  color: #A6ACAF;
+}
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.dropdown-container select {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.select {
+  margin-bottom:10px;
+  font-size: 14px !important;
+  width: 90% !important;
+}
+
+.category {
+   background-color: #242424 !important;
+}
+
 .rowTotal td{
   font-weight: bold;
 }
-
 
 .sellingpricetotal {
     background: #A6ACAF;
@@ -53,7 +96,7 @@
 }
 
 .css-19bb58m {
-  display: none !important; 
+  display: none !important;
 }
 
 .css-b62m3t-container {
@@ -78,11 +121,11 @@
   font-size: 14px !important;
 }
 
-.css-1xc3v61-indicatorContainer { 
+.css-1xc3v61-indicatorContainer {
   padding: 5px !important;
   cursor: pointer !important;
 }
-  
+
 /* Responsive Styles */
 @media (max-width: 767px) {
     .fl-table {

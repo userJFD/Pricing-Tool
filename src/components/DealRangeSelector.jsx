@@ -1,6 +1,3 @@
-import React from 'react';
-import '../styles/DetailSelector.css';
-
 const DealRangeSelector = ({ dealRange, onDealRangeChange }) => {
   const dealRanges = [
     "<150k",
