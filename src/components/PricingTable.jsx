@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/PricingTable.css';
 import Select from 'react-select';
 import swissflag from '../../public/images/switzerland.png';
@@ -9,6 +8,9 @@ function PricingTable({
   setPurchaseAmount,
   deliveryPercent,
   setDeliveryPercent,
+  deliveryAmount,
+  setDeliveryAmount,
+  setRecentlyChanged,
   kickbacksPercent,
   setKickbacksPercent,
   marginPercent,
@@ -16,7 +18,6 @@ function PricingTable({
   vatRate,
   setVatRate,
   vatRates,
-  deliveryAmount,
   kickbacksAmount,
   minimumSellingPrice,
   marginAmount,
@@ -93,10 +94,23 @@ function PricingTable({
                 type="number"
                 step="0.01"
                 value={deliveryPercent}
-                onChange={(e) => setDeliveryPercent(e.target.value)}
+                onChange={(e) => {
+                  setDeliveryPercent(e.target.value);
+                  setRecentlyChanged('percent');
+                }}
               />
             </td>
-            <td>{deliveryAmount.toFixed(2)}</td>
+            <td>
+              <input
+                type="number"
+                step="0.01"
+                value={deliveryAmount}
+                onChange={(e) => {
+                  setDeliveryAmount(e.target.value);
+                  setRecentlyChanged('amount');
+                }}
+              />
+            </td>
           </tr>
           <tr>
             <td>-</td>

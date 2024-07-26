@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import DetailTable from './components/DetailTable';
 import PricingTable from './components/PricingTable';
@@ -17,22 +17,39 @@ function App() {
     }
   };
 
-  const defaultVatRate = vatRates["Switzerland"]["non-food"]; 
+  const defaultVatRate = vatRates["Switzerland"]["non-food"];
   const [purchaseAmount, setPurchaseAmount] = useState('0.00');
   const [deliveryPercent, setDeliveryPercent] = useState('0.00');
+  const [deliveryAmount, setDeliveryAmount] = useState('0.00');
+  const [recentlyChanged, setRecentlyChanged] = useState(null);
   const [kickbacksPercent, setKickbacksPercent] = useState('0.00');
   const [marginPercent, setMarginPercent] = useState('0.00');
   const [vatRate, setVatRate] = useState(defaultVatRate);
-  
+
   const purchaseAmountNumber = parseFloat(purchaseAmount) || 0;
   const deliveryPercentNumber = parseFloat(deliveryPercent) || 0;
+  const deliveryAmountNumber = parseFloat(deliveryAmount) || 0;
   const kickbacksPercentNumber = parseFloat(kickbacksPercent) || 0;
   const marginPercentNumber = parseFloat(marginPercent) || 0;
   const vatPercentNumber = vatRate ? parseFloat(vatRate) : 0;
 
-  const deliveryAmount = (purchaseAmountNumber * deliveryPercentNumber) / 100;
+  useEffect(() => {
+    if (recentlyChanged === 'percent') {
+      const newDeliveryAmount = (purchaseAmountNumber * deliveryPercentNumber) / 100;
+      setDeliveryAmount(newDeliveryAmount.toFixed(2));
+    }
+  }, [deliveryPercent, purchaseAmountNumber]);
+
+  useEffect(() => {
+    if (recentlyChanged === 'amount') {
+      const newDeliveryPercent = (parseFloat(deliveryAmountNumber) * 100) / purchaseAmountNumber;
+      setDeliveryPercent(newDeliveryPercent.toFixed(2));
+    }
+  }, [deliveryAmountNumber, purchaseAmountNumber]);
+
+
   const kickbacksAmount = (purchaseAmountNumber * kickbacksPercentNumber) / 100;
-  const minimumSellingPrice = purchaseAmountNumber + deliveryAmount - kickbacksAmount;
+  const minimumSellingPrice = (purchaseAmountNumber + deliveryAmountNumber) - kickbacksAmount;
   const marginAmount = (minimumSellingPrice * marginPercentNumber) / (100 - marginPercentNumber);
   const sellingPriceExclVat = minimumSellingPrice + marginAmount;
   const vatAmount = (sellingPriceExclVat * vatPercentNumber) / 100;
@@ -49,6 +66,9 @@ function App() {
         setPurchaseAmount={setPurchaseAmount}
         deliveryPercent={deliveryPercent}
         setDeliveryPercent={setDeliveryPercent}
+        deliveryAmount={deliveryAmount}
+        setDeliveryAmount={setDeliveryAmount}
+        setRecentlyChanged={setRecentlyChanged}
         kickbacksPercent={kickbacksPercent}
         setKickbacksPercent={setKickbacksPercent}
         marginPercent={marginPercent}
@@ -56,7 +76,6 @@ function App() {
         vatRate={vatRate}
         setVatRate={setVatRate}
         vatRates={vatRates}
-        deliveryAmount={deliveryAmount}
         kickbacksAmount={kickbacksAmount}
         minimumSellingPrice={minimumSellingPrice}
         marginAmount={marginAmount}
@@ -71,4 +90,3 @@ function App() {
 }
 
 export default App;
-
