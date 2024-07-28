@@ -4,6 +4,7 @@ import '../../App.css'
 import DetailTable from '../DetailTable';
 import PricingTable from '../PricingTable';
 import ScreenshotButton from '../ScreenshotButton';
+import { Link } from 'react-router-dom';
 
 const SingleCalculator = () => {
     const vatRates = {
@@ -56,36 +57,37 @@ const SingleCalculator = () => {
       const sellingPriceInclVat = sellingPriceExclVat + vatAmount;
     
       return (
-        <div className="app-container">
+        <>
           <h2>B2B Calculator</h2>
-    
+          <Link to="/multicalc"> Multicalc</Link>
+
           <DetailTable/>
-    
-          <PricingTable
-            purchaseAmount={purchaseAmount}
-            setPurchaseAmount={setPurchaseAmount}
-            deliveryPercent={deliveryPercent}
-            setDeliveryPercent={setDeliveryPercent}
-            deliveryAmount={deliveryAmount}
-            setDeliveryAmount={setDeliveryAmount}
-            setRecentlyChanged={setRecentlyChanged}
-            kickbacksPercent={kickbacksPercent}
-            setKickbacksPercent={setKickbacksPercent}
-            marginPercent={marginPercent}
-            setMarginPercent={setMarginPercent}
-            vatRate={vatRate}
-            setVatRate={setVatRate}
-            vatRates={vatRates}
-            kickbacksAmount={kickbacksAmount}
-            minimumSellingPrice={minimumSellingPrice}
-            marginAmount={marginAmount}
-            sellingPriceExclVat={sellingPriceExclVat}
-            vatAmount={vatAmount}
-            sellingPriceInclVat={sellingPriceInclVat}
-          />
-    
+          <div className="app-container">
+            <PricingTable
+              purchaseAmount={purchaseAmount}
+              setPurchaseAmount={setPurchaseAmount}
+              deliveryPercent={deliveryPercent}
+              setDeliveryPercent={setDeliveryPercent}
+              deliveryAmount={deliveryAmount}
+              setDeliveryAmount={setDeliveryAmount}
+              setRecentlyChanged={setRecentlyChanged}
+              kickbacksPercent={kickbacksPercent}
+              setKickbacksPercent={setKickbacksPercent}
+              marginPercent={marginPercent}
+              setMarginPercent={setMarginPercent}
+              vatRate={vatRate}
+              setVatRate={setVatRate}
+              vatRates={vatRates}
+              kickbacksAmount={kickbacksAmount}
+              minimumSellingPrice={minimumSellingPrice}
+              marginAmount={marginAmount}
+              sellingPriceExclVat={sellingPriceExclVat}
+              vatAmount={vatAmount}
+              sellingPriceInclVat={sellingPriceInclVat}
+            />
+          </div>
           <ScreenshotButton />
-        </div>
+        </>
       );
 }
 
