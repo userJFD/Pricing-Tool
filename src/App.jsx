@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import SingleCalc from './components/Pages/SingleCalculator'
+import MultiCalc from './components/Pages/MultiCalculator';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     createRoutesFromElements(
     <Route>
       <Route index element={<SingleCalc/>} />
-      <Route path='MultiCalc' element={<h1>hello</h1>} />
+      <Route path='/multicalc' element={<MultiCalc/>} />
     </Route>
    
   )
