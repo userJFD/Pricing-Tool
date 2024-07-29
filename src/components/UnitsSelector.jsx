@@ -16,6 +16,7 @@ function UnitsInput({ units, onUnitsChange }) {
   return (
     <div>
       <input
+        className="numberCol"
         type="number"
         value={units === '' ? '' : units} 
         onChange={handleChange}
