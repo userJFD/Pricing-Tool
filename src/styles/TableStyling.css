@@ -63,7 +63,6 @@ input[type="text"] {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
 .dropdown-container select {
@@ -75,7 +74,6 @@ input[type="text"] {
 }
 
 .select {
-  margin-bottom:10px;
   font-size: 14px !important;
   width: 90% !important;
 }
