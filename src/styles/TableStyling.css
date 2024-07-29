@@ -3,48 +3,55 @@
     box-shadow: 0px 0px 117px #000000;
 }
 
-.fl-table {
+.fl-table, .fl-tabletwo {
     border-radius: 5px;
     font-size: 18px;
     font-weight: normal;
     border: none;
     border-collapse: collapse;
-    width: 100%;
+    
     max-width: 100%;
     white-space: nowrap;
     background-color: #c2c5c7;
 }
 
-.fl-table td, .fl-table th {
+.fl-table {
+  width: 100%;
+}
+
+
+.fl-table td, .fl-table th, 
+.fl-tabletwo td, .fl-tabletwo th {
     text-align: center;
     padding: 8px;
 }
 
-.fl-table td {
+.fl-table td, .fl-tabletwo td {
     border-right: 1px solid #303030;
     font-size: 16px;
     color: #242424;
 }
 
-.fl-table thead th {
+.fl-table thead th, .fl-tabletwo thead th {
     color: #242424;
     background: #A6ACAF;
 }
 
-.fl-table thead th:nth-child(odd) {
+.fl-table thead th:nth-child(odd),  .fl-tabletwo thead th:nth-child(odd){
     color: #242424;
     background: #A6ACAF;
 }
 
-.fl-table tr:nth-child(even) {
+.fl-table tr:nth-child(even), .fl-tabletwo tr:nth-child(even) {
     background: #A6ACAF;
 }
 
 .fl-table input,
-.fl-table select {
+.fl-table select,
+.fl-tabletwo input,
+.fl-tabletwo select {
   font-size: 20px;
   height: 40px;
-  width: 60%;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -54,16 +61,38 @@
   color: #A6ACAF;
 }
 
+.fl-table input,
+.fl-table select {
+  width: 60%;
+}
+
+.thSubtitle {
+  margin: 0px;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
 .dropdown-container {
   position: relative;
   width: 100%;
 }
 
-input[type="text"] {
-  width: 100%;
+.fl-table input[type="text"], .fl-tabletwo input[type="text"]{
   padding: 10px;
   font-size: 14px;
 }
+
+.fl-table input[type="text"]{
+  width: 100%;
+}
+
+.numberCol {
+  width: 100px;
+}
+
+.vatCol {
+  width: 180px !important;
+} 
 
 .dropdown-container select {
   width: 100%;
